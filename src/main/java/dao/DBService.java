@@ -3,7 +3,6 @@ import java.sql.*;
 
 public class DBService {
     public static Connection con;
-
     static{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
