@@ -88,7 +88,6 @@ public class CreateTable {
         String dataBase = null;
         System.out.println("Enter database :");
         dataBase = sc.nextLine();
-
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
             String user = "root";
