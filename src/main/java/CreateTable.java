@@ -28,8 +28,6 @@ public class CreateTable {
                 System.out.println(e.getMessage());
             }
         }while (choice != 4 );
-
-
     }
     private static void insertDB(){
         Scanner in = new Scanner(System.in);
@@ -91,7 +89,7 @@ public class CreateTable {
             String pass = "kingsultan12345";
             Class.forName(driver);
 
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+database, "root","kingsultan12345");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+database, user,pass);
             System.out.println("Connected with database");
             return conn;
         } catch (Exception e) {
