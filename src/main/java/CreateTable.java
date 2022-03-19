@@ -7,7 +7,7 @@ public class CreateTable {
         int choice = 0;
         do {
             try{
-                System.out.println("1.Connection \n2.Create Table \n3.insert Data\n");
+                System.out.println("1.Connection \n2.Create Table \n3.insert Data\n3.Delete DB\n");
                 System.out.println("Enter your choice");
                 choice = sc.nextInt();
                 switch (choice){
@@ -23,12 +23,17 @@ public class CreateTable {
                         System.out.println("insert data");
                         insertDB();
                         break;
+                    case 4 :
+                        System.out.println("Drop Schema");
+                        DeleteDatabase();
+                        break;
                 }
             } catch (Exception e) {
                 System.out.println(e.getMessage());
             }
-        }while (choice != 4 );
+        }while (choice != 5 );
     }
+    // inserting Database
     private static void insertDB(){
         Scanner in = new Scanner(System.in);
         int id;
@@ -55,7 +60,7 @@ public class CreateTable {
             System.out.println("Error : " + e.getMessage());
         }
     }
-
+    //Creating Table
     private static void createTable(){
         Scanner sc = new Scanner(System.in);
         String tableName = null;
@@ -77,6 +82,30 @@ public class CreateTable {
             System.out.println("Error : "+e.getMessage());
         }
     }
+    //Delete Database
+    private static Connection DeleteDatabase(){
+        Scanner sc = new Scanner(System.in);
+        String dataBase = null;
+        System.out.println("Enter database :");
+        dataBase = sc.nextLine();
+
+        try {
+            String driver = "com.mysql.cj.jdbc.Driver";
+            String user = "root";
+            String pass = "kingsultan12345";
+            Class.forName(driver);
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+dataBase   , user,pass);
+            PreparedStatement drop = conn.prepareStatement("DROP DATABASE "+dataBase);
+            drop.executeUpdate();
+            System.out.println("Database dropped");
+            return conn;
+
+        } catch (Exception e) {
+            System.out.println("Error : "+e.getMessage());
+        }
+        return null;
+    }
+    // getting Connection
     private static Connection getConnection()throws Exception, SQLException {
         Scanner sc = new Scanner(System.in);
         String database = null;
