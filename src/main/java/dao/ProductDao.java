@@ -9,21 +9,32 @@ public class ProductDao {
     public static List<Product> getAllProducts() {
         List<Product> results = new ArrayList<>();
         try{
-            ResultSet rs = DBService.query("select * from products");
+            ResultSet rs = DBService.query("select * from medicines");
             while (true){
                 assert rs != null;
-                if (!rs.next()) break;
+                if (!rs.next())
+                    break;
                 results.add(new Product
                         (
-                                Long.valueOf(rs.getString("id")),
-                                rs.getString("product_name"),
-                                (Long.valueOf(rs.getString("p_category_id"))),
-                                Long.valueOf(rs.getString("price"))));
+                                Integer.valueOf(rs.getString("id")),
+                                rs.getString("m_name"),
+                                rs.getString("m_varient"),
+                                Double.valueOf(rs.getString("m_price")),
+                                Integer.valueOf(rs.getString("m_quantity"))));
+//                                rs.getString("product_name"),
+//                                (Long.valueOf(rs.getString("p_category_id"))),
+//                                Long.valueOf(rs.getString("price"))));
             }
-            DBService.con.close();
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return results;
     }
+
+    public static void main(String[] args) {
+        System.out.println(getAllProducts());
+    }
+
+
 }

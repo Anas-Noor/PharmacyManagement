@@ -7,7 +7,7 @@ public class DBService {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con= DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/pharmacy_managment","root","kingsultan12345");
+                    "jdbc:mysql://localhost:3306/pharmacy_management","root","");
 
         } catch (Exception e) {
             e.printStackTrace();
