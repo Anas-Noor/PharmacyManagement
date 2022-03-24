@@ -1,12 +1,12 @@
 package products;
 
-public class Product {
+public class Medicine {
     private Long id;
     private String name;
     private Long categoryId;
     private Long price;
 
-    public Product(Long id, String name, Long categoryId, Long price) {
+    public Medicine(Long id, String name, Long categoryId, Long price) {
         this.id = id;
         this.name = name;
         this.categoryId = categoryId;
