@@ -12,7 +12,6 @@ public class DBService {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     public static ResultSet query(String query) throws SQLException {
 
